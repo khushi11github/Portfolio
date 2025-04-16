@@ -1,0 +1,164 @@
+/* Base Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar.scrolled {
+    padding: 1rem 0;
+    background: rgba(10, 10, 10, 0.95);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Logo Styles */
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-highlight {
+    color: #8b5cf6;
+  }
+  
+  /* Navigation Content */
+  .nav-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+  }
+  
+  .nav-link:hover {
+    color: white;
+  }
+  
+  .link-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #8b5cf6;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  
+  .nav-link:hover .link-underline,
+  .active-link .link-underline {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .active-link {
+    color: white !important;
+  }
+  
+  /* Social Links */
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .social-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #8b5cf6;
+  }
+  
+  /* Mobile Menu Button */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 992px) {
+    .nav-content {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      transition: right 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+      z-index: 1000;
+      padding: 2rem;
+    }
+  
+    .nav-content.active {
+      right: 0;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+  
+    .social-links {
+      margin-top: 2rem;
+    }
+  
+    .menu-btn {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .nav-content {
+      width: 85%;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+    }
+  }
