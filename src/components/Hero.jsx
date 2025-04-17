@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FaGithub, FaLinkedin, FaCode, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaCode, FaArrowDown, FaFileDownload } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import './navhero.css';
 
@@ -9,6 +9,18 @@ const Hero = () => {
     "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80",
     "https://images.unsplash.com/photo-1619410283995-43d9134e7656?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   ];
+
+  // Function to handle resume download
+  const handleDownload = () => {
+    // Replace with your actual resume file path
+    const resumeUrl = '/khushi.pdf'; 
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Khushi_Kumari_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="hero" className="hero-section">
@@ -89,6 +101,7 @@ const Hero = () => {
                 <FaCode style={{ marginRight: 8 }} />
                 View Projects
               </motion.a>
+              
               <motion.a
                 href="#contact"
                 className="cta-button secondary"
@@ -96,6 +109,19 @@ const Hero = () => {
               >
                 Get In Touch
               </motion.a>
+              
+              <motion.button
+                onClick={handleDownload}
+                className="cta-button resume-button"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(255, 255, 255, 0.1)"
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaFileDownload style={{ marginRight: 8 }} />
+                Download CV
+              </motion.button>
             </div>
           </motion.div>
 
