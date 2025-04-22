@@ -1,0 +1,148 @@
+/* Section Styles */
+.cp-section {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Header Styles */
+  .cp-header-container {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .cp-main-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cp-subtitle {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+  }
+  
+  .cp-divider {
+    height: 3px;
+    width: 80px;
+    background: linear-gradient(to right, #8b5cf6, #ec4899);
+    margin: 0 auto;
+    border-radius: 3px;
+  }
+  
+  /* Card Styles */
+  .cp-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.8rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .cp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Platform Header */
+  .cp-platform-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.8rem;
+  }
+  
+  .cp-logo {
+    width: 45px;
+    height: 45px;
+    margin-right: 1.2rem;
+  }
+  
+  .cp-platform-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.2rem;
+  }
+  
+  .cp-username {
+    font-size: 0.9rem;
+    color: #6366f1;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .cp-username:hover {
+    color: #4f46e5;
+    text-decoration: underline;
+  }
+  
+  /* Stats Grid */
+  .cp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Stat Box */
+  .cp-stat-box {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .cp-stat-box:hover {
+    background: #f1f5f9;
+  }
+  
+  .cp-stat-title {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .cp-stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  
+  /* Chart Container */
+  .cp-chart-container {
+    height: 220px;
+    margin-top: 1rem;
+  }
+  
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    .cp-main-title {
+      color: #f3f4f6;
+    }
+  
+    .cp-card {
+      background: #1e293b;
+    }
+  
+    .cp-platform-title {
+      color: #f3f4f6;
+    }
+  
+    .cp-stat-box {
+      background: #0f172a;
+    }
+  
+    .cp-stat-box:hover {
+      background: #1e293b;
+    }
+  
+    .cp-stat-value {
+      color: #f8fafc;
+    }
+  }

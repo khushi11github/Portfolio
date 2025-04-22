@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Certifications from './components/Certifications'
+import CompetitiveProgramming from './components/CompetitiveProgramming'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -57,6 +58,8 @@ function App() {
      
       <Education id="education" />
       <Certifications id="certifications" />
+
+      <CompetitiveProgramming/>
       <Contact id="contact" />
       <Footer />
     </div>
