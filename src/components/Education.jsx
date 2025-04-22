@@ -39,42 +39,37 @@ const Education = () => {
     }
   ];
 
-  const containerVariants = {
+  // Animation variants
+  const container = {
     hidden: { opacity: 0 },
-    visible: {
+    show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
+        staggerChildren: 0.2
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
       y: 0,
-      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const icon = {
+    hidden: { scale: 0 },
+    show: {
+      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 120,
-        damping: 12
-      }
-    },
-    hover: {
-      y: -10,
-      boxShadow: "0 15px 30px rgba(139, 92, 246, 0.3)"
-    }
-  };
-
-  const headingVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
+        stiffness: 200,
+        damping: 10
       }
     }
   };
@@ -90,49 +85,105 @@ const Education = () => {
       <div className="education-container">
         <div className="education-header-wrapper">
           <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            variants={headingVariants}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             className="education-title-container"
           >
             <span className="education-section-subtitle">My Academic</span>
             <h2 className="education-section-title">
-              <span className="education-title-line">Journey</span>
-              <span className="education-title-highlight">.</span>
+              <motion.span 
+                className="education-title-line"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                Journey
+              </motion.span>
+              <motion.span 
+                className="education-title-highlight"
+                animate={{ 
+                  opacity: [1, 0.7, 1],
+                  transition: { duration: 2, repeat: Infinity } 
+                }}
+              >
+                .
+              </motion.span>
             </h2>
-            <div className="education-title-divider"></div>
-            <p className="education-section-description">
+            <motion.div 
+              className="education-title-divider"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            />
+            <motion.p
+              className="education-section-description"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
               From classrooms to codebases, my path of continuous learning
-            </p>
+            </motion.p>
           </motion.div>
         </div>
 
         <motion.div
           className="education-cards"
           ref={ref}
-          variants={containerVariants}
+          variants={container}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isInView ? "show" : "hidden"}
         >
           {educationData.map((item, index) => (
             <motion.div
               key={index}
               className="education-card"
-              variants={itemVariants}
-              whileHover="hover"
-              whileTap={{ scale: 0.98 }}
+              variants={item}
+              whileHover={{ y: -5 }}
             >
-              <div className="education-card-decoration"></div>
-              <div className="education-card-icon">{item.icon}</div>
+              <motion.div 
+                className="education-card-decoration"
+                variants={icon}
+              />
+              <motion.div 
+                className="education-card-icon"
+                variants={icon}
+                whileHover={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                {item.icon}
+              </motion.div>
               
               <div className="education-card-content">
                 <div className="education-card-header">
                   <h3>{item.institution}</h3>
-                  <span className="education-year-badge">{item.year}</span>
+                  <motion.span 
+                    className="education-year-badge"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 + index * 0.1 }}
+                  >
+                    {item.year}
+                  </motion.span>
                 </div>
                 
-                <p className="education-degree">{item.degree}</p>
-                <p className="education-grade">{item.grade}</p>
+                <motion.p 
+                  className="education-degree"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                >
+                  {item.degree}
+                </motion.p>
+                <motion.p 
+                  className="education-grade"
+                  initial={{ opacity: 0, x: 10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + index * 0.1 }}
+                >
+                  {item.grade}
+                </motion.p>
               </div>
             </motion.div>
           ))}
